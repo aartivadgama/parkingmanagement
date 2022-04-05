@@ -13,4 +13,15 @@ export default class HomeController extends PureComponent<props, state> {
         this.state = {
         }
     }
+
+    validateEmail = (email : string) => {
+        console.log("Hiiii");
+        if(email === ''){
+            console.log("Please enter email");
+            return false;
+        } else {
+            console.log("Email is valid");
+            return true;
+        }
+    }
 }
