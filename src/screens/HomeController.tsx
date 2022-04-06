@@ -13,4 +13,12 @@ export default class HomeController extends PureComponent<props, state> {
         this.state = {
         }
     }
+
+    validateInput = (str : string) => {
+        if(str === '') {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
