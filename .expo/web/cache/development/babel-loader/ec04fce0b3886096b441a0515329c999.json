@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["\nexport interface lot  {\n    id: string,\n    carNum: string,\n    isAlloted: boolean,\n    inTime: string,\n    outTime: string,\n}"]},"metadata":{},"sourceType":"script"}
