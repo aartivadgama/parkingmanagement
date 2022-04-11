@@ -15,21 +15,15 @@ describe("validateInput", () => {
     // Act
     const actual = instance.validateInput("");
     const actual1 = instance.validateInput("123asd"); 
-//Thu Apr 07 2022 18:55:22
-    // const actual3 = instance.calcPayment("Thu Apr 07 2022 18:00:00", "Thu Apr 07 2022 19:00:00");
-    // const actual4 = instance.calcPayment("Thu Apr 07 2022 18:00:00", "Thu Apr 07 2022 21:00:00");
-    // console.log("actual3", actual3);
-    // console.log("actual4", actual4);
+// //Thu Apr 07 2022 18:55:22
+//     const actual3 = instance.calcPayment("Thu Apr 07 2022 18:00:00", "Thu Apr 07 2022 19:00:00");
+//     const actual4 = instance.calcPayment("Thu Apr 07 2022 18:00:00", "Thu Apr 07 2022 21:00:00");
+//     console.log("actual3", actual3);
+//     console.log("actual4", actual4);
 
     const ex = true;
-    // const ex3 = 20;
-    // const ex4 = 30;
-
 
     expect(actual).toBe(ex);
     expect(actual1).toBe(ex);
-    // expect(actual3).toBe(ex3);
-    // expect(actual4).toBe(ex4);
-
   });
 });

@@ -54,7 +54,7 @@ export default class HomeView extends HomeController {
                     renderItem={({ item, index }) => {
                         return (
                             <View style={styles.viewStyle}>
-                                <Text style={{textAlign: "right", alignSelf:"flex-start"}}>P{item.id}</Text>
+                                <Text style={{ textAlign: "right", alignSelf: "flex-start" }}>P{item.id}</Text>
                                 {item.isAlloted &&
                                     <Button icon="logout" onPress={() => {
                                         this.onPressExitCar(index);

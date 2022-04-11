@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { lot } from '../model/lot';
 import moment from 'moment'
+import {calculatePayment} from '../Common';
 
 interface props {
     navigation: any;
@@ -22,7 +23,7 @@ export default class HomeController extends Component<props, state> {
         super(props);
 
         this.state = {
-            numLots: props.route.params.item,
+            numLots: props.route ? props.route.params.item : 5,
             arrLot: [],
             showDialog: false,
             carNumber: '',
@@ -51,7 +52,6 @@ export default class HomeController extends Component<props, state> {
         }
 
         this.setState({});
-        console.log("this", this.state.arrLot);
     }
 
     onChangeTextNumLot = (val: string) => {
@@ -59,8 +59,14 @@ export default class HomeController extends Component<props, state> {
     }
 
     validateInput = (strLot: string) => {
+        let filter = this.state.arrLot.filter(function (item) {
+            return item.carNum === strLot;
+        });
         if (strLot === '') {
             this.setState({ error: "Please enter car number" })
+            return false;
+        } else if(filter.length > 0) {
+            this.setState({ error: "Car number already exists." })
             return false;
         } else {
             this.setState({ error: "" })
@@ -112,7 +118,7 @@ export default class HomeController extends Component<props, state> {
         let strEnd : string = `${endDate}`
         console.log("Hiii PayableAmount123", strStart, strEnd);
 
-        let paymentAmt = this.calcPayment(strStart, strEnd);
+        let paymentAmt = calculatePayment(strStart, strEnd);
         console.log("Hiii PayableAmount", paymentAmt);
 
         obj.isAlloted = false;
@@ -127,32 +133,5 @@ export default class HomeController extends Component<props, state> {
 
     onPressPay = () => {
         this.setState({ showPaymentDialog: false });
-    }
-
-    calcPayment = (startDate: string, endDate: string) => {
-        var start = moment(startDate); // another date
-        var end = moment(endDate); // another date
-
-        var duration = moment.duration(end.diff(start));
-        var asMinutes = duration.asMinutes()
-        var asHours = duration.asHours()
-
-        console.log("duration", duration);
-        console.log("asMinutes", asMinutes);
-
-        var baseAmt : number = 20;
-        var paymentAmt = 0;
-        if(asMinutes <= 60) {
-            paymentAmt = baseAmt;
-        } else {
-            var hour = Math.floor(asHours);
-            hour = hour - 2
-            if(hour >= 1) {
-                paymentAmt = baseAmt + (hour * 10);
-            } else {
-                paymentAmt = baseAmt;
-            }
-        }
-        return paymentAmt;
     }
 }

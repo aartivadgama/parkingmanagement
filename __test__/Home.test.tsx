@@ -5,6 +5,6 @@ declare module 'react-test-renderer';
 import HomeView from '../src/screens/HomeView';
 
 it('renders correctly', () => {
-    const tree = renderer.create(<HomeView />).toJSON();
-    expect(tree).toMatchSnapshot();
+   const tree = renderer.create(<HomeView />).toJSON();
+   expect(tree).toMatchSnapshot();
 })
